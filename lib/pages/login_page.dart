@@ -160,6 +160,8 @@
 //   }
 // }
 
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -192,13 +194,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _titleWidget(),
                 _loginForm(),
                 _loginButton(),
+                _registerPageLink(),
               ],
             ),
           ),
@@ -234,16 +237,16 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginForm() {
     return Container(
-      height: _deviceHeight! * 0.70,
+      //height: _deviceHeight! * 0.70,
       child: Form(
         key: _loginFormKey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _emailTextField(),
-            SizedBox(height: 40),
+            //  SizedBox(height: 40),
             _passwordTextField(),
           ],
         ),
@@ -310,5 +313,19 @@ class _LoginPageState extends State<LoginPage> {
     if (_loginFormKey.currentState!.validate()) {
       _loginFormKey.currentState!.save();
     }
+  }
+
+  Widget _registerPageLink() {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, 'register'),
+      child: const Text(
+        "Didn't have account ?",
+        style: TextStyle(
+          color: Colors.blue,
+          fontSize: 15,
+          fontWeight: FontWeight.w200,
+        ),
+      ),
+    );
   }
 }
