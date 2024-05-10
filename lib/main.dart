@@ -1,3 +1,4 @@
+import 'package:finstagram/pages/home_page.dart';
 import 'package:finstagram/pages/login_page.dart';
 import 'package:finstagram/pages/register_pages.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,11 @@ class MyApp extends StatelessWidget {
       ),
 
       //home: Scaffold(),
-      initialRoute: 'login',
+      initialRoute: 'home',
       routes: {
         'register': (context) => RegisterPage(),
         'login': (context) => LoginPage(),
+        'home': (context) => HomePage(),
       },
     );
   }
