@@ -163,6 +163,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget _profileImageWidget() {
+    // ignore: unused_local_variable
     var _imageProvider = _image != null
         ? FileImage(_image!)
         : const NetworkImage("https://i.pravatar.cc/300");
@@ -185,7 +186,7 @@ class _RegisterPageState extends State<RegisterPage> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: _imageProvider as ImageProvider,
-            // NetworkImage("https://i.pravatar.cc/300"),
+            //    NetworkImage("https://i.pravatar.cc/300"),
           ),
         ),
       ),
