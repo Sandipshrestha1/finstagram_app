@@ -14,4 +14,16 @@ class FirebaseService {
 // creating FirebaseService constructor
 
   FirebaseService();
+
+  Future<bool> loginUser(
+      {required String email, required String password}) async {
+    UserCredential _userCredential = await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
+
+    if (_userCredential.user != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
