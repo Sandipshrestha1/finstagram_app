@@ -27,9 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-
-      //home: Scaffold(),
-      initialRoute: 'home',
+      initialRoute: 'login',
       routes: {
         'register': (context) => RegisterPage(),
         'login': (context) => LoginPage(),
