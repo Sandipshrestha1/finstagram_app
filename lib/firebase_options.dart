@@ -4,16 +4,6 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -57,7 +47,6 @@ class DefaultFirebaseOptions {
     databaseURL: 'https://finstagram-udemy-6305e-default-rtdb.firebaseio.com',
     storageBucket: 'finstagram-udemy-6305e.appspot.com',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBE3ENdhN0CBr8VSF3zG9X_E_JmavwBnow',
     appId: '1:675448118426:ios:41edf193d6f8907ab59323',
