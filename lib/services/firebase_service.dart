@@ -139,22 +139,27 @@ class FirebaseService {
   }
 
   Future<bool> postImage(File _image) async {
-    String _userId = _auth.currentUser!.uid;
-    String _fileName = Timestamp.now().millisecondsSinceEpoch.toString() +
-        p.extension(_image.path);
+    try {
+      String _userId = _auth.currentUser!.uid;
+      String _fileName = Timestamp.now().millisecondsSinceEpoch.toString() +
+          p.extension(_image.path);
 
-    UploadTask _task = _db.ref('images/$_userId/$_fileName').putFile(_image);
+      UploadTask _task = _db.ref('images/$_userId/$_fileName').putFile(_image);
 
-    return await _task.then((_snapshot) async {
-      String _downloadURL = await _snapshot.ref.getDownloadURL();
+      return await _task.then((_snapshot) async {
+        String _downloadURL = await _snapshot.ref.getDownloadURL();
 
-      await _firestore.collection(POSTS_COLLECTION).add({
-        "userId": _userId,
-        "timestamp": Timestamp.now(),
-        "image": _downloadURL,
+        await _firestore.collection(POSTS_COLLECTION).add({
+          "userId": _userId,
+          "timestamp": Timestamp.now(),
+          "image": _downloadURL,
+        });
+
+        return true;
       });
-
-      return true;
-    });
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 }
