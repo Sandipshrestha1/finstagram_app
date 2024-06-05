@@ -162,4 +162,11 @@ class FirebaseService {
       return false;
     }
   }
+
+  Stream<QuerySnapshot> getLatestPosts() {
+    return _firestore
+        .collection(POSTS_COLLECTION)
+        .orderBy("timestamp", descending: true)
+        .snapshots();
+  }
 }
