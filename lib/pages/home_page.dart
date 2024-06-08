@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           GestureDetector(
-            onTap: () {},
+            onTap: _postImage,
             child: const Icon(Icons.add_a_photo),
           ),
           Padding(
@@ -47,8 +47,13 @@ class _HomePageState extends State<HomePage> {
               left: 8.0,
               right: 8.0,
             ),
-            child:
-                GestureDetector(onTap: () {}, child: const Icon(Icons.logout)),
+            child: GestureDetector(
+                onTap: () async {
+                  await _firebaseService!.logout();
+
+                  Navigator.popAndPushNamed(context, 'login');
+                },
+                child: const Icon(Icons.logout)),
           ),
         ],
       ),
