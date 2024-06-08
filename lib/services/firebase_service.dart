@@ -163,6 +163,15 @@ class FirebaseService {
     }
   }
 
+  Stream<QuerySnapshot> getPostsForUser() {
+    String _userId = _auth.currentUser!.uid;
+    return _firestore
+        .collection(POSTS_COLLECTION)
+        .where('userId', isEqualTo: _userId)
+        .orderBy('timestamp', descending: true)
+        .snapshots();
+  }
+
   Stream<QuerySnapshot> getLatestPosts() {
     return _firestore
         .collection(POSTS_COLLECTION)
